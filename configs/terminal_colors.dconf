@@ -1,0 +1,10 @@
+[/]
+visible-name='Dev Terminal'
+use-theme-colors=false
+foreground-color='rgb(180,255,180)'
+background-color='rgb(0,28,35)'
+palette=['rgb(0,28,35)','rgb(255,85,85)','rgb(80,250,123)','rgb(241,250,140)','rgb(98,114,164)','rgb(255,121,198)','rgb(139,233,253)','rgb(248,248,242)','rgb(68,71,90)','rgb(255,85,85)','rgb(80,250,123)','rgb(241,250,140)','rgb(98,114,164)','rgb(255,121,198)','rgb(139,233,253)','rgb(248,248,242)']
+cursor-foreground-color='rgb(0,28,35)'
+cursor-background-color='rgb(180,255,180)'
+highlight-foreground-color='rgb(0,28,35)'
+highlight-background-color='rgb(80,250,123)'

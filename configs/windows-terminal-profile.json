@@ -1,0 +1,41 @@
+{
+    "$help": "Como usar: abra o Windows Terminal → Configurações (Ctrl+,) → Abrir JSON. Cole o bloco 'scheme' em 'schemes' e o bloco 'profile' em 'profiles.list'. Salve e selecione o perfil 'Dev Terminal'.",
+
+    "scheme": {
+        "name": "Dev Terminal",
+        "background": "#001c23",
+        "foreground": "#b4ffb4",
+        "cursorColor": "#b4ffb4",
+        "selectionBackground": "#274a52",
+        "black": "#001c23",
+        "red": "#ff5555",
+        "green": "#50fa7b",
+        "yellow": "#f1fa8c",
+        "blue": "#bd93f9",
+        "purple": "#ff79c6",
+        "cyan": "#8be9fd",
+        "white": "#f8f8f8",
+        "brightBlack": "#6272a4",
+        "brightRed": "#ff6e6e",
+        "brightGreen": "#50fa7b",
+        "brightYellow": "#f1fa8c",
+        "brightBlue": "#bd93f9",
+        "brightPurple": "#ff79c6",
+        "brightCyan": "#8be9fd",
+        "brightWhite": "#f8f8f8"
+    },
+
+    "profile": {
+        "name": "Dev Terminal (WSL)",
+        "source": "Windows.Terminal.Wsl",
+        "colorScheme": "Dev Terminal",
+        "font": {
+            "face": "MesloLGS NF",
+            "size": 12
+        },
+        "opacity": 95,
+        "useAcrylic": true,
+        "cursorShape": "bar",
+        "padding": "8"
+    }
+}
