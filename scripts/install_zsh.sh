@@ -60,6 +60,46 @@ cp "$PROJECT_DIR/configs/zshrc.template" ~/.zshrc
 
 echo "Setting default shell..."
 
-chsh -s "$(which zsh)" 2>/dev/null || true
+set_default_shell() {
+  local zsh_path
+  zsh_path="$(which zsh)"
+
+  # Garante que o zsh está no /etc/shells
+  if ! grep -qx "$zsh_path" /etc/shells 2>/dev/null; then
+    echo "  Adicionando $zsh_path ao /etc/shells..."
+    echo "$zsh_path" | sudo tee -a /etc/shells > /dev/null || true
+  fi
+
+  # Tenta chsh — pode falhar em ambientes com LDAP/AD (usuário não está no /etc/passwd local)
+  if chsh -s "$zsh_path" 2>/dev/null; then
+    echo "  ✓ Shell padrão alterado para zsh via chsh."
+    return
+  fi
+
+  # Fallback: adiciona 'exec zsh' no .bashrc para iniciar zsh automaticamente
+  echo "  ⚠ chsh falhou (comum em ambientes com LDAP/Active Directory)."
+  echo "  Aplicando fallback: adicionando 'exec zsh' ao ~/.bashrc..."
+
+  local marker="# dev-terminal-setup: auto-start zsh"
+
+  if grep -q "$marker" "$HOME/.bashrc" 2>/dev/null; then
+    echo "  ✓ Fallback já configurado em ~/.bashrc."
+  else
+    cat >> "$HOME/.bashrc" <<EOF
+
+$marker
+# Inicia zsh automaticamente quando o shell padrão não pôde ser alterado via chsh.
+# Para desfazer, remova o bloco abaixo.
+if command -v zsh &>/dev/null && [[ \$- == *i* ]]; then
+  exec zsh
+fi
+EOF
+    echo "  ✓ Fallback adicionado ao ~/.bashrc."
+  fi
+
+  echo "  Abra um novo terminal — ele vai iniciar direto no zsh."
+}
+
+set_default_shell
 
 echo "ZSH setup done."

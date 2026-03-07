@@ -110,6 +110,31 @@ do_uninstall() {
 
   ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 
+  # Remove o fallback do .bashrc se existir
+  if grep -q "dev-terminal-setup: auto-start zsh" "$HOME/.bashrc" 2>/dev/null; then
+    echo "  Removendo fallback zsh do ~/.bashrc..."
+    # Remove o bloco entre o marcador e o 'fi' correspondente
+    python3 - "$HOME/.bashrc" <<'PYEOF'
+import sys
+path = sys.argv[1]
+with open(path) as f:
+    content = f.read()
+marker = "# dev-terminal-setup: auto-start zsh"
+start = content.find("\n" + marker)
+if start == -1:
+    start = content.find(marker)
+    if start > 0:
+        start -= 1
+if start != -1:
+    end = content.find("\nfi\n", start)
+    if end != -1:
+        content = content[:start] + content[end + 4:]
+    with open(path, "w") as f:
+        f.write(content)
+    print("  ✓ Fallback removido do ~/.bashrc.")
+PYEOF
+  fi
+
   echo "  Removendo plugins..."
   rm -rf "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
   rm -rf "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
