@@ -52,8 +52,13 @@ do_install() {
   echo ""
   echo "Next steps:"
   echo "  1. Abra um novo terminal (ou reinicie o atual)"
-  echo "  2. Execute: p10k configure"
-  echo "  3. No Cursor/VSCode: reabra o terminal integrado para ver os ícones"
+  echo "     → O Powerlevel10k já vem configurado com o preset rainbow."
+  echo "     → Execute 'p10k configure' a qualquer momento para personalizar."
+  echo "  2. No Cursor/VSCode: reabra o terminal integrado para ver os ícones."
+  echo ""
+  echo "  macOS (iTerm2) → O perfil 'Dev Terminal' foi criado automaticamente."
+  echo "  macOS (Terminal.app) → Perfil instalado como padrão (requer Xcode CLT para cores)."
+  echo "  WSL → Windows Terminal configurado automaticamente."
 }
 
 # ==============================

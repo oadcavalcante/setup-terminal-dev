@@ -27,9 +27,20 @@ case "$OS" in
     ;;
   macos)
     if ! command -v brew &>/dev/null; then
-      echo "Homebrew não encontrado. Instale em: https://brew.sh"
-      echo "  /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
-      exit 1
+      echo "  Homebrew não encontrado. Instalando automaticamente..."
+      NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      # Adiciona ao PATH para Apple Silicon e Intel
+      if [[ -f /opt/homebrew/bin/brew ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      elif [[ -f /usr/local/bin/brew ]]; then
+        eval "$(/usr/local/bin/brew shellenv)"
+      fi
+      if ! command -v brew &>/dev/null; then
+        echo "  ⚠ Falha ao instalar Homebrew automaticamente."
+        echo "  Instale manualmente e rode novamente: https://brew.sh"
+        exit 1
+      fi
+      echo "  ✓ Homebrew instalado com sucesso."
     fi
     brew install zsh git curl 2>/dev/null || true
     ;;
@@ -48,6 +59,16 @@ echo "Installing Powerlevel10k..."
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
   "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" 2>/dev/null || true
+
+# Instala preset rainbow do p10k para evitar o wizard interativo
+if [[ ! -f "$HOME/.p10k.zsh" ]]; then
+  P10K_PRESET="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k/config/p10k-rainbow.zsh"
+  if [[ -f "$P10K_PRESET" ]]; then
+    cp "$P10K_PRESET" "$HOME/.p10k.zsh"
+    echo "  ✓ Configuração padrão Powerlevel10k (rainbow) instalada em ~/.p10k.zsh"
+    echo "    (Execute 'p10k configure' a qualquer momento para personalizar)"
+  fi
+fi
 
 echo "Applying zsh config..."
 
