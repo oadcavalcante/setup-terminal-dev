@@ -1,16 +1,52 @@
-# Dev Terminal Setup
+<div align="center">
 
-Configuração moderna de terminal para desenvolvedores com:
+💻
 
-- ZSH + Oh My Zsh + Powerlevel10k
-- zsh-autosuggestions
-- zsh-syntax-highlighting
-- zsh-you-should-use
-- Nerd Font (instalação automática)
-- Tema de cores personalizado (iTerm2, Terminal.app, GNOME Terminal, Windows Terminal)
-- Configuração automática de Cursor / VSCode
+# Setup Terminal Dev
 
-Funciona em **Linux**, **WSL (Windows)** e **macOS**.
+**Script de instalação automatizada de terminal para devs com ZSH, Oh My Zsh, Powerlevel10k e plugins.**
+
+<br />
+
+[![Repositório público](https://img.shields.io/badge/repo-público-2ea44f?style=flat-square&logo=github&logoColor=white)](https://github.com/oadcavalcante/setup-terminal-dev)
+
+<br />
+
+[![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logoColor=fff&logo=gnubash)](https://github.com/oadcavalcante/setup-terminal-dev) [![ZSH](https://img.shields.io/badge/ZSH-000000?style=flat-square&logoColor=fff&logo=gnubash)](https://github.com/oadcavalcante/setup-terminal-dev) [![Oh My Zsh](https://img.shields.io/badge/ZSH-000000?style=flat-square&logoColor=fff&logo=gnubash)](https://github.com/oadcavalcante/setup-terminal-dev) [![Homebrew](https://img.shields.io/badge/Homebrew-555555?style=flat-square)](https://github.com/oadcavalcante/setup-terminal-dev)
+
+[![Powerlevel10k](https://img.shields.io/badge/Powerlevel10k-555555?style=flat-square)](https://github.com/oadcavalcante/setup-terminal-dev) [![Nerd Fonts](https://img.shields.io/badge/Nerd_Fonts-555555?style=flat-square)](https://github.com/oadcavalcante/setup-terminal-dev)
+
+<br />
+
+[Stack completa ↓](#stack)
+
+<br />
+
+[Documentação](https://github.com/oadcavalcante/setup-terminal-dev/blob/main/README.md) · [Deploy](#deploy) · [Issues](https://github.com/oadcavalcante/setup-terminal-dev/issues)
+
+</div>
+
+## Features
+
+- ✨ Instalação automática em Linux, macOS e WSL
+- 🚀 ZSH com Oh My Zsh e tema Powerlevel10k rainbow
+- ⚡ Plugins: autosuggestions, syntax-highlighting, you-should-use
+- 🎯 Instalação automática da fonte MesloLGS NF
+- 🔧 Aplica tema Dev Terminal no iTerm2, GNOME e Windows Terminal
+- 📦 Configura Cursor e VSCode automaticamente
+
+## Getting Started
+
+| Ambiente | Comando / Link |
+|----------|----------------|
+| Primeira vez | `chmod +x install.sh && ./install.sh` |
+| Documentação | [README](https://github.com/oadcavalcante/setup-terminal-dev/blob/main/README.md) |
+| Produção | N/A |
+
+## Stack
+
+- **Infra / DevOps:** Bash, ZSH, Oh My Zsh, Homebrew
+- **Outros:** Powerlevel10k, Nerd Fonts
 
 ---
 
